@@ -1,0 +1,137 @@
+/* Global Styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 700px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  font-family: "Roboto", sans-serif;
+  color: #222;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Button */
+.button {
+  display: inline-block;
+  background: #4caf50;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background: #388e3c;
+  transform: translateY(-3px);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* Input */
+.input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Thread */
+.thread {
+  display: block;
+  background: #fafafa;
+  padding: 12px;
+  margin: 10px 0;
+  text-decoration: none;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.thread:hover {
+  background: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+/* Reply */
+.reply {
+  background: #f9fafb;
+  padding: 12px;
+  border-left: 5px solid #4caf50;
+  margin: 8px 0;
+  border-radius: 6px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.reply:hover {
+  background: #f4f7f9;
+  border-left-color: #388e3c;
+}
+
+
+
+/* // Add some basic CSS to your styles.css file */
+.thread-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.thread {
+  flex-grow: 1;
+  text-decoration: none;
+  color: #333;
+}
+
+.delete-button {
+  margin-left: 10px;
+  padding: 35px 25px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+} 
