@@ -64,7 +64,7 @@ h3 {
 
 /* Input */
 .input {
-  width: 100%;
+  width: 96%;
   padding: 12px;
   margin: 8px 0;
   border: 1px solid #ddd;
@@ -112,8 +112,6 @@ h3 {
   border-left-color: #388e3c;
 }
 
-
-
 /* // Add some basic CSS to your styles.css file */
 .thread-container {
   display: flex;
@@ -134,9 +132,9 @@ h3 {
   color: white;
   border: none;
   border-radius: 3px;
-  cursor: pointer;;
+  cursor: pointer;
 }
 
 .delete-button:hover {
   background-color: #cc0000;
-} 
+}
