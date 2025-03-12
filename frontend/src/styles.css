@@ -20,6 +20,11 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.container h3 {
+  margin-bottom: 20px;
+  color: rgb(91, 90, 90);
+}
+
 .container:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
