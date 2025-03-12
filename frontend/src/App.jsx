@@ -35,7 +35,6 @@ const Home = () => {
         if (!res.ok) {
           throw new Error("Failed to delete thread");
         }
-        // Update the threads state by filtering out the deleted thread
         setThreads((prevThreads) =>
           prevThreads.filter((thread) => thread.id !== threadId)
         );
@@ -46,7 +45,6 @@ const Home = () => {
   return (
     <div className="container">
       <h1>Forum App</h1>
-      <h3>Share your thoughts with the community</h3>
       <Link to="/new" className="button">
         Create New Thread
       </Link>
@@ -64,7 +62,6 @@ const Home = () => {
   );
 };
 
-// Rest of the components remain the same
 const Thread = () => {
   const { id } = useParams();
   const [thread, setThread] = useState(null);
@@ -125,6 +122,9 @@ const Thread = () => {
 
   return (
     <div className="container">
+      <Link to="/" className="button">
+        Hem
+      </Link>
       <h2>{thread.thread?.title || thread.title}</h2>
       <p>{thread.thread?.content || thread.content}</p>
       <h3>Replies</h3>
@@ -196,6 +196,9 @@ const NewThread = () => {
 
   return (
     <div className="container">
+      <Link to="/" className="button">
+        Hem
+      </Link>
       <h1>New Thread</h1>
       {error && <p className="error">{error}</p>}
       <input
