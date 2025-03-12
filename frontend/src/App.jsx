@@ -45,6 +45,7 @@ const Home = () => {
   return (
     <div className="container">
       <h1>Forum App</h1>
+      <p>Welcome to the forum! Feel free to create a new thread.</p>
       <Link to="/new" className="button">
         Create New Thread
       </Link>
