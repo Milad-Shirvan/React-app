@@ -106,5 +106,29 @@ app.delete("/threads/:id", (req, res) => {
 
   res.json({ message: "Thread and replies deleted" });
 });
+
+//edit a reply
+app.put("/threads/:threadId/replies/:replyId", (req, res) => {
+    const { content } = req.body;
+    const { threadId, replyId } = req.params;
+  
+    if (!content) {
+      return res.status(400).json({ error: "Content is required" });
+    }
+  
+    const reply = db
+      .prepare("SELECT * FROM replies WHERE id = ? AND thread_id = ?")
+      .get(replyId, threadId);
+  
+    if (!reply) {
+      return res.status(404).json({ error: "Reply not found" });
+    }
+  
+    db.prepare("UPDATE replies SET content = ? WHERE id = ?")
+      .run(content, replyId);
+  
+    res.json({ message: "Reply updated" });
+  });
+
 // Start the server
 app.listen(5000, () => console.log("Server running on port 5000"));
