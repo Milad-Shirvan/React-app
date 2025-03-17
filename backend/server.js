@@ -1,5 +1,6 @@
+//Importerar CORS (Cross-Origin Resource Sharing), ett middleware-paket för Express.
 import express from "express";
-import cors from "cors";
+import cors from "cors";  
 import Database from "better-sqlite3";
 
 const app = express();
@@ -129,6 +130,29 @@ app.put("/threads/:threadId/replies/:replyId", (req, res) => {
   
     res.json({ message: "Reply updated" });
   });
+
+ //edit a thread
+ app.put("/threads/:id", (req, res) => {
+    const { content, title } = req.body;
+    const { id } = req.params;
+  
+    if (content === undefined || title === undefined) {
+      return res.status(400).json({ error: "Title and content must be provided" });
+    }
+  
+    const thread = db.prepare("SELECT * FROM threads WHERE id = ?").get(id);
+  
+    if (!thread) {
+      return res.status(404).json({ error: "Thread not found" });
+    }
+  
+    db.prepare("UPDATE threads SET title = ?, content = ? WHERE id = ?")
+      .run(title, content, id);
+  
+    res.json({ message: "Thread updated successfully" });
+  });
+
+
 
 // Start the server
 app.listen(5000, () => console.log("Server running on port 5000"));

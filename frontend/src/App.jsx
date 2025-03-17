@@ -79,9 +79,9 @@ const Thread = () => {
   const { id } = useParams();
   const [thread, setThread] = useState(null);
   const [newReply, setNewReply] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); //man data nadaram hanoz.
   const [editingThread, setEditingThread] = useState(false);
-  const [editedThreadContent, setEditedThreadContent] = useState("");
+  const [editedThreadContent, setEditedThreadContent] = useState(""); //man data daram vali hanoz khalie.
   const [editingReplyId, setEditingReplyId] = useState(null);
   const [editedReplyContent, setEditedReplyContent] = useState("");
 
@@ -135,13 +135,14 @@ const Thread = () => {
       });
   };
 
-  const editThread = () => {
+  const editThread = (newContent) => {
+    const threadTitle = thread?.thread?.title || thread?.title || ""; // Ensure title is always a string
     fetch(`http://localhost:5000/threads/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        content: editedThreadContent,
-        title: thread.title,
+        content: newContent,
+        title: threadTitle,
       }),
     })
       .then((res) => {
@@ -153,7 +154,7 @@ const Thread = () => {
       .then(() => {
         setThread((prev) => ({
           ...prev,
-          content: editedThreadContent,
+          content: newContent,
         }));
         setEditingThread(false);
       })
@@ -201,7 +202,6 @@ const Thread = () => {
         Home
       </Link>
 
-      {/* Thread display/edit */}
       {editingThread ? (
         <div>
           <input
@@ -209,7 +209,10 @@ const Thread = () => {
             value={editedThreadContent}
             onChange={(e) => setEditedThreadContent(e.target.value)}
           />
-          <button className="button" onClick={editThread}>
+          <button
+            className="button"
+            onClick={() => editThread(editedThreadContent)}
+          >
             Save
           </button>
           <button className="button" onClick={() => setEditingThread(false)}>
@@ -218,13 +221,15 @@ const Thread = () => {
         </div>
       ) : (
         <div>
-          <h2>{thread.thread?.title || thread.title}</h2>
-          <p>{thread.thread?.content || thread.content}</p>
+          <h2>{thread?.thread?.title || thread?.title}</h2>
+          <p>{thread?.thread?.content || thread?.content}</p>
           <button
             className="button"
             onClick={() => {
               setEditingThread(true);
-              setEditedThreadContent(thread.thread?.content || thread.content);
+              setEditedThreadContent(
+                thread?.thread?.content || thread?.content || ""
+              );
             }}
           >
             Edit Thread
