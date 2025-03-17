@@ -136,7 +136,7 @@ const Thread = () => {
   };
 
   const editThread = (newContent) => {
-    const threadTitle = thread?.thread?.title || thread?.title || ""; // Ensure title is always a string
+    const threadTitle = thread?.thread?.title || thread?.title || ""; // motmaen mishe ke title ro peida kone va hamishe string bashe.
     fetch(`http://localhost:5000/threads/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
